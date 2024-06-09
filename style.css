@@ -636,6 +636,10 @@ main {
     margin-top: 30px;
 }
 
+.view-more a{
+    text-decoration: none;
+}
+
 .view-more h2{
     width: 200px;
     padding: 0.3rem 0 0.3rem 0;
@@ -1050,4 +1054,10 @@ main {
     position: absolute;
     text-decoration: none;
     margin-left:150px;
+}
+
+/* Search View */
+
+.search-view {
+    margin-top: 100px;
 }

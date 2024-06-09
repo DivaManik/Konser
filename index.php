@@ -34,10 +34,24 @@ while ($row2 = mysqli_fetch_assoc($result2)) {
     $temp[] = $row2;
 }
 
+$search_query = "";
+if (isset($_GET['search'])) {
+    $search_query = $_GET['search'];
+}
+
+$sql = "SELECT * FROM konser WHERE 
+        nama_konser LIKE '%$search_query%' OR 
+        lokasi LIKE '%$search_query%' OR 
+        waktu_konser LIKE '%$search_query%'";
+$result = mysqli_query($conn, $sql);
+
+$temp = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $temp[] = $row;
+}
+
 $conn->close();
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,8 +70,9 @@ $conn->close();
                 <a href="index.html" class="logo">LocalNight</a>
                 <!-- Search Bar -->
                 <div class="search">
-                    <a class="icon-search" href="#"><img src="img/icon/bx-search.svg" alt=""></a>
-                    <input class="search-box" type="text" placeholder="Search...">
+                    <form action="searchview.php" method="get">
+                        <input class="search-box" type="text" name="search" placeholder="Search...">
+                    </form>
                     <a class="cone-filter" href="#">
                         <div class="container-cone">
                             <img src="img/icon/bx-filter.svg" alt="">
@@ -84,7 +99,7 @@ $conn->close();
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
-                    <a href="list_tickets.php   " class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php
