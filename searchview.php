@@ -51,7 +51,7 @@ $conn->close();
                         </div>
                     </a>
                 </div>
-                <div class="filter">
+                <!-- <div class="filter">
                     <div class="dropdown">
                         <a href="#" class="event-link">Genre</a>
                         <div class="dropdown-content">
@@ -62,7 +62,7 @@ $conn->close();
                             <a href="#"><h3>EDM</h3></a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Account and Balance -->
                 <div class="nav-menu">
                     <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
