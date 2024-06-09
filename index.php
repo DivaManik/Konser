@@ -173,9 +173,9 @@ $conn->close();
             </div>
 
             <!-- View More -->
-            <div class="view-more">
+            <!-- <div class="view-more">
                 <h2>View More</h2>
-            </div>     
+            </div>      -->
         </main>
     </div>
     <!-- Footer -->
