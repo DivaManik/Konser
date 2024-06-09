@@ -26,7 +26,9 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Daftar Tiket Dibeli</title>
+    <link rel="icon" href="img/Logo/stock-photo-cartoon-emoji-hand-holding-microphone-and-showing-victory-gesture-isolated-over-purple-background-2175571409.jpg">
+
+    <title>Daftar Tiket Dipesan</title>
 </head>
 <body>
 <div class="container">

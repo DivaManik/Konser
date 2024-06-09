@@ -1002,6 +1002,7 @@ main {
     width: 70px;
     height: 30px;
     text-align: center;
+    text-decoration: none;
 }
 
 .delete-button{
@@ -1013,6 +1014,7 @@ main {
     cursor: pointer;
     width: 70px;
     height: 30px;
+    text-decoration: none;
     text-align: center;
 }
 

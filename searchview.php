@@ -18,6 +18,17 @@ while ($row = mysqli_fetch_assoc($result)) {
     $temp[] = $row;
 }
 
+$user = null;
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $query_user = "SELECT name FROM users WHERE id = $user_id";
+    $result_user = mysqli_query($conn, $query_user);
+
+    if ($result_user) {
+        $user = mysqli_fetch_assoc($result_user);
+    }
+}
+
 $conn->close();
 ?>
 
@@ -26,6 +37,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Logo/stock-photo-cartoon-emoji-hand-holding-microphone-and-showing-victory-gesture-isolated-over-purple-background-2175571409.jpg">
     <link rel="stylesheet" href="style.css">
     <title>Search Results</title>
 </head>
@@ -77,7 +89,7 @@ $conn->close();
                             ?>
                         </a>
                         <?php
-                        if (isset($_SESSION['user_id'])) {
+                        if (isset($user)) {
                             echo "<div class='dropdown-content'>
                                     <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
                                     <a href='logout.php'>Logout</a>
@@ -132,9 +144,9 @@ $conn->close();
             </div>
             <div class="footer-info">
                 <ul>
-                    <li><h4>About Us</h4></li>
-                    <li><h4>Terms & Condition</h4></li>
-                    <li><h4>Privacy Policy</h4></li>
+                    <li><h4>About Us</li>
+                    <li><h4>Terms & Condition</li>
+                    <li><h4>Privacy Policy</li>
                 </ul>
             </div>
             <div class="copy-right"><h3>&copy;2024 PT.Local Night. All Right Reserved </h3></div>
