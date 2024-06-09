@@ -123,7 +123,7 @@ $conn->close();
                                         <p><img src="img/icon/bxs-map.svg" alt=""><?php echo $datas["lokasi"]; ?></p>
                                         <p><img src="img/icon/bx-calendar.svg" alt=""><?php echo $datas["waktu_konser"]; ?> | <?php echo $datas["jam_konser"]; ?></p>
                                     </div>
-                                    <p class="status other-status"> Start From : <span>Rp <?php echo $datas["harga_reguler"]; ?></span></p>
+                                    <p class="status other-status"> Start From : <span>Rp <?php echo number_format($datas["harga_reguler"]); ?></span></p>
                                 </div>
                             </a>
                         <?php } 
