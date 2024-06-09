@@ -114,8 +114,10 @@ $conn->close();
                     <img src="img/asset/konser.jpg" alt="">
                 </div>
                 <div class="main-topic">
-                    <h1>Enjoy Your Life With <span>Local Night</span></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ut porro, nemo ab doloribus voluptatum voluptatem non deleniti temporibus esse repellat totam. Aperiam accusantium eum repudiandae quaerat voluptatibus a vero!</p>
+                    <!-- <h1>Enjoy Your Life With <span>Local Night</span></h1> -->
+                    <h1>Local Night: Tempat Dimana Musik dan <span>Malam Menyatu!</span></h1>
+                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ut porro, nemo ab doloribus voluptatum voluptatem non deleniti temporibus esse repellat totam. Aperiam accusantium eum repudiandae quaerat voluptatibus a vero!</p> -->
+                     <p>Temukan pengalaman konser musik terbaik di kotamu hanya di Local Night. Kami hadir untuk membawa artis lokal dan internasional ke panggung, menghadirkan alunan musik yang memukau dan tak terlupakan. Dengan jadwal konser yang selalu up-to-date, Local Night adalah destinasi utama bagi para pencinta musik untuk menikmati penampilan live yang memukau, mulai dari genre rock yang energik hingga jazz yang menenangkan. Mari bergabung dengan kami dan nikmati malam yang penuh dengan harmoni dan ritme di Local Night, di mana setiap momen konser adalah kenangan yang berharga.</p>
                 </div>
             </div>
 
@@ -173,7 +175,7 @@ $conn->close();
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <a href="index.html" class="logo-footer"><h2>LocalNight</h2></a>
+            <a href="index.php" class="logo-footer"><h2>LocalNight</h2></a>
             <div class="icon-container">
                 <img src="img/icon/bxl-facebook-circle.svg" alt="">
                 <img src="img/icon/bxl-instagram.svg" alt="">

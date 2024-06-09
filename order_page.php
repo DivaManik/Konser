@@ -181,7 +181,7 @@ if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
 
 <footer>
     <div class="footer-container">
-        <a href="index.html" class="logo-footer"><h2>LocalNight</h2></a>
+        <a href="index.php" class="logo-footer"><h2>LocalNight</h2></a>
         <div class="icon-container">
             <img src="img/icon/bxl-facebook-circle.svg" alt="">
             <img src="img/icon/bxl-instagram.svg" alt="">
