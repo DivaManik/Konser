@@ -116,7 +116,6 @@ header{
 
 .cone-filter {   
     height: 2.4rem;
-
     display: flex;
 }
 
@@ -124,19 +123,21 @@ header{
 .container-cone {
     position: relative;
     display: inline-block;
-    
+
 }
 
 .container-cone img {
     background-color: white;
     border-radius: 0 0.3rem 0.3rem 0;
-
+    height: 38.5px;
     border-left: 1px solid black;
 }
 
 .container-cone:hover .cone-content{
     display: block;
+    margin-top: -5px;
     animation: dropdownani 1.2s;
+    justify-content: center;
 }
 
 .cone-content {
@@ -145,22 +146,40 @@ header{
     margin-left: -2.6rem; 
     background-color: #64B5F6;
     border-radius: 0.3rem;
-    width: 100;
+    width: 100px;
+    height:130px;
 }
 
-
-.cone-content a {
+a.link-filter{
     text-decoration: none;
-    color: black;
-    font-family: var(--poppins-fonts);
-    padding-top: 30px;
-    /* border: 1px solid black; */
+    border-radius: 0.3rem;
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.link-filter:nth-child(3){
+    background-color: #90CAF9;
+    padding: 0 25px 0 25px;
+    margin-left: 5px;
+}
+
+.link-filter:nth-child(5){
+    background-color: #90CAF9;
+    padding: 0 14px 0 14.5px;
+    margin-left: 5px;
+}
+
+.link-filter:nth-child(7){
+    background-color: #90CAF9;
+    padding: 0 25px 0 33px;
+    margin-left: 5px;
 }
 
 .cone-content p{
     font-family: var(--poppins-fonts);
     cursor: default;
-    margin-top: -20px;
+    margin-top: 10px;
 }
 
 

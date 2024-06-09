@@ -67,17 +67,20 @@ $conn->close();
                     <form action="index.php" method="get">
                         <input class="search-box" type="text" name="search" placeholder="Search...">
                     </form>
-                    <a class="cone-filter" href="#">
+                    <div class="cone-filter" href="#">
                         <div class="container-cone">
                             <img src="img/icon/bx-filter.svg" alt="">
                             <div class="cone-content">
                                 <p class="filter-by">Filter By :</p>
-                                <a href="searchview.php?filter=name">Name</a>
-                                <a href="searchview.php?filter=location">Location</a>
-                                <a href="searchview.php?filter=date">Date</a>
+                                <br>
+                                <a href="searchview.php?filter=name" class="link-filter" >Name</a>
+                                <br>
+                                <a href="searchview.php?filter=location" class="link-filter">Location</a>
+                                <br>
+                                <a href="searchview.php?filter=date" class="link-filter">Date</a>
                             </div>
                         </div>
-                     </a>
+                    </div>
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
