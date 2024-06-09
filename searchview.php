@@ -7,10 +7,29 @@ if (isset($_GET['search'])) {
     $search_query = $_GET['search'];
 }
 
-$sql = "SELECT * FROM konser WHERE 
-        nama_konser LIKE '%$search_query%' OR 
-        lokasi LIKE '%$search_query%' OR 
-        waktu_konser LIKE '%$search_query%'";
+$filter = "name"; // Default filter
+if (isset($_GET['filter'])) {
+    $filter = $_GET['filter'];
+}
+
+$sql = "SELECT * FROM konser";
+
+if (!empty($search_query)) {
+    $sql .= " WHERE nama_konser LIKE '%$search_query%' OR lokasi LIKE '%$search_query%' OR waktu_konser LIKE '%$search_query%'";
+}
+
+switch ($filter) {
+    case "location":
+        $sql .= " ORDER BY lokasi ASC";
+        break;
+    case "date":
+        $sql .= " ORDER BY waktu_konser DESC";
+        break;
+    default:
+        $sql .= " ORDER BY nama_konser ASC";
+        break;
+}
+
 $result = mysqli_query($conn, $sql);
 
 $temp = [];
@@ -56,24 +75,12 @@ $conn->close();
                             <img src="img/icon/bx-filter.svg" alt="">
                             <div class="cone-content">
                                 <p>Filter By :</p>
-                                <a href="#">Name</a>
-                                <a href="#">Location</a>
-                                <a href="#">Date</a>
+                                <a href="searchview.php?filter=name">Name</a>
+                                <a href="searchview.php?filter=location">Location</a>
+                                <a href="searchview.php?filter=date">Date</a>
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="filter">
-                    <div class="dropdown">
-                        <a href="#" class="event-link">Genre</a>
-                        <div class="dropdown-content">
-                            <a href="#"><h3>Rap</h3></a>
-                            <a href="#"><h3>RnB</h3></a>
-                            <a href="#"><h3>Pop</h3></a>
-                            <a href="#"><h3>Rock</h3></a>
-                            <a href="#"><h3>EDM</h3></a>
-                        </div>
-                    </div>
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">

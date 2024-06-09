@@ -27,18 +27,18 @@ if (isset($_GET['id'])) {
         
         // Update stok berdasarkan tipe tiket
         if ($ticket['type'] == 'Reguler') {
-            $ticket['stock_reguler'] += 1;
+            $new_stock = $ticket['stock_reguler'] + 1;
             $update_stock_query = "UPDATE konser SET stock_reguler = ? WHERE id = ?";
         } elseif ($ticket['type'] == 'VIP') {
-            $ticket['stock_vip'] += 1;
+            $new_stock = $ticket['stock_vip'] + 1;
             $update_stock_query = "UPDATE konser SET stock_vip = ? WHERE id = ?";
         } elseif ($ticket['type'] == 'Super VIP') {
-            $ticket['stock_supervip'] += 1;
+            $new_stock = $ticket['stock_supervip'] + 1;
             $update_stock_query = "UPDATE konser SET stock_supervip = ? WHERE id = ?";
         }
 
         $stmt_update_stock = $conn->prepare($update_stock_query);
-        $stmt_update_stock->bind_param("ii", $ticket['stock_reguler'], $ticket['konser_id']);
+        $stmt_update_stock->bind_param("ii", $new_stock, $ticket['konser_id']);
         $stmt_update_stock->execute();
 
         // Hapus tiket dari database

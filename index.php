@@ -43,6 +43,7 @@ if (isset($_GET['search'])) {
     }
 }
 
+
 $conn->close();
 ?>
 
@@ -70,26 +71,14 @@ $conn->close();
                         <div class="container-cone">
                             <img src="img/icon/bx-filter.svg" alt="">
                             <div class="cone-content">
-                                <p>Filter By :</p>
-                                <a href="#">Name</a>
-                                <a href="#">Location</a>
-                                <a href="#">Date</a>
+                                <p class="filter-by">Filter By :</p>
+                                <a href="searchview.php?filter=name">Name</a>
+                                <a href="searchview.php?filter=location">Location</a>
+                                <a href="searchview.php?filter=date">Date</a>
                             </div>
                         </div>
-                    </a>
+                     </a>
                 </div>
-                <!-- <div class="filter">
-                    <div class="dropdown">
-                        <a href="#" class="event-link">Genre</a>
-                        <div class="dropdown-content">
-                            <a href="#"><h3>Rap</h3></a>
-                            <a href="#"><h3>RnB</h3></a>
-                            <a href="#"><h3>Pop</h3></a>
-                            <a href="#"><h3>Rock</h3></a>
-                            <a href="#"><h3>EDM</h3></a>
-                        </div>
-                    </div>
-                </div> -->
                 <!-- Account and Balance -->
                 <div class="nav-menu">
                     <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
@@ -142,7 +131,7 @@ $conn->close();
                                 </div>
                                 <h3><?php echo $data["nama_konser"] ?></h3>
                                     <div class="price-status">
-                                        <p>Start From : <span>Rp. <?php echo $data["harga_reguler"] ?></span></p>
+                                        <p>Start From : <span>Rp. <?php echo number_format($data["harga_reguler"]) ?></span></p>
                                         <p>Ticket Available</p>
                                     </div>
                             </div>
@@ -165,7 +154,7 @@ $conn->close();
                                 <p><img src="img/icon/bxs-map.svg" alt=""><?php  echo $datas["lokasi"] ?></p>
                                 <p><img src="img/icon/bx-calendar.svg" alt=""><?php  echo $datas["waktu_konser"] ?> | <?php  echo $datas["jam_konser"] ?></p>
                             </div>
-                            <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
+                            <p class="status other-status"> Start From : <span><?php echo number_format($datas['harga_reguler'])?></span></p>
                         </div>
                     </a>
                     <?php }?>    

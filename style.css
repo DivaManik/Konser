@@ -145,6 +145,7 @@ header{
     margin-left: -2.6rem; 
     background-color: #64B5F6;
     border-radius: 0.3rem;
+    width: 100;
 }
 
 
@@ -153,6 +154,7 @@ header{
     color: black;
     font-family: var(--poppins-fonts);
     padding-top: 30px;
+    /* border: 1px solid black; */
 }
 
 .cone-content p{
