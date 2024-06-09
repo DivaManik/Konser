@@ -51,7 +51,7 @@ $conn->close();
                         </div>
                     </a>
                 </div>
-                <!-- <div class="filter">
+                <div class="filter">
                     <div class="dropdown">
                         <a href="#" class="event-link">Genre</a>
                         <div class="dropdown-content">
@@ -62,7 +62,7 @@ $conn->close();
                             <a href="#"><h3>EDM</h3></a>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
                     <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
@@ -90,7 +90,7 @@ $conn->close();
         </header>
         <main class="search-view">
             <!-- Other -->
-            <div class="recomend-text other-text"><h2>Filtered Event</h2></div>
+            <div class="recomend-text other-text"><h2>Search Results</h2></div>
             <div class="recomend other-2">
                 <div class="recomend-container other-container">
                     <?php if (count($temp) > 0) {

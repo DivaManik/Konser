@@ -20,34 +20,27 @@ if (isset($_SESSION['user_id'])) {
     $user = null;
 }
 
-$query = "SELECT *, (stock_supervip + stock_vip + stock_reguler)FROM konser ORDER BY (stock_supervip + stock_vip + stock_reguler) DESC LIMIT 3";
+$query = "SELECT *, (stock_supervip + stock_vip + stock_reguler) FROM konser ORDER BY (stock_supervip + stock_vip + stock_reguler) DESC LIMIT 3";
 $result = mysqli_query($conn, $query);
 $tampung = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $tampung[] = $row;
 }
 
-$kueri = "SELECT * FROM konser ";
+$kueri = "SELECT * FROM konser";
 $result2 = mysqli_query($conn, $kueri);
 $temp = [];
 while ($row2 = mysqli_fetch_assoc($result2)) {
     $temp[] = $row2;
 }
 
-$search_query = "";
+// Proses pencarian
 if (isset($_GET['search'])) {
-    $search_query = $_GET['search'];
-}
-
-$sql = "SELECT * FROM konser WHERE 
-        nama_konser LIKE '%$search_query%' OR 
-        lokasi LIKE '%$search_query%' OR 
-        waktu_konser LIKE '%$search_query%'";
-$result = mysqli_query($conn, $sql);
-
-$temp = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $temp[] = $row;
+    $search_query = trim($_GET['search']);
+    if (!empty($search_query)) {
+        header("Location: searchview.php?search=" . urlencode($search_query));
+        exit();
+    }
 }
 
 $conn->close();
@@ -67,10 +60,10 @@ $conn->close();
         <!-- header -->
         <header>
             <div class="nav">
-                <a href="index.html" class="logo">LocalNight</a>
+                <a href="index.php" class="logo">LocalNight</a>
                 <!-- Search Bar -->
                 <div class="search">
-                    <form action="searchview.php" method="get">
+                    <form action="index.php" method="get">
                         <input class="search-box" type="text" name="search" placeholder="Search...">
                     </form>
                     <a class="cone-filter" href="#">
@@ -177,8 +170,6 @@ $conn->close();
                     </a>
                     <?php }?>    
                 </div>
-                
-                
             </div>
 
             <!-- View More -->

@@ -3,7 +3,9 @@ session_start();
 include "koneksi.php";
 
 if (!isset($_SESSION['user_id'])) {
-    echo "Anda Harus Login ";
+    echo "<script>alert('Anda harus login terlebih dahulu untuk memesan tiket.');</script>";
+    echo "<script>window.location.href='login.html';</script>";
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
@@ -13,8 +15,9 @@ $pesan_vip  = $_POST['vip-ticket'];
 $pesan_super_vip = $_POST['super-vip-ticket'];
 if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
     $konser_id = $_POST['konser_id'];
-    echo "<script>alert('Please fill all the fields');</script>";
+    echo "<script>alert('Anda Harus Memesan Ticket');</script>";
     echo "<script>window.location.href='detail.php?id=$konser_id';</script>";
+    exit();
 } else {
     $harga_reguler = (int)$_POST['harga-reguler-ticket'] * (int)$pesan_reguler;
     $harga_vip = (int)$_POST['harga-vip_ticket'] * (int)$pesan_vip;
@@ -36,48 +39,47 @@ if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
 <body>
 <div class="container">
     <header>
-            <div class="nav">
-                <a href="index.php" class="logo">LocalNight</a>
-                <!-- Account and Balance -->
-                <div class="nav-menu">
-                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
-                    <div class="dropdown">
-                        <a href="#" class="menu-bar user">
-                            <?php
-                            if (!isset($_SESSION['user_id'])) {
-                                echo "<div class='sign-in-btn'><a class ='sign-in' href='login.html'>Sign In</a></div>";
-                            } else {
-                                echo "<img src='img/icon/bx-user.svg' alt=''>";
-                            }
-                            ?>
-                        </a>
+        <div class="nav order-page">
+            <a href="index.php" class="logo">LocalNight</a>
+            <!-- Account and Balance -->
+            <div class="nav-menu">
+                <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                <div class="dropdown">
+                    <a href="#" class="menu-bar user">
                         <?php
-                        if (isset($_SESSION['user_id'])) {
-                            $user_id = $_SESSION['user_id'];
-                            $query_user = "SELECT name FROM users WHERE id = $user_id";
-                            $result_user = mysqli_query($conn, $query_user);
-
-                            if ($result_user) {
-                                $user = mysqli_fetch_assoc($result_user);
-                                echo "<div class='dropdown-content'>
-                                        <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
-                                        <a href='logout.php'>Logout</a>
-                                      </div>";
-                            }
+                        if (!isset($_SESSION['user_id'])) {
+                            echo "<div class='sign-in-btn'><a class ='sign-in' href='login.html'>Sign In</a></div>";
+                        } else {
+                            echo "<img src='img/icon/bx-user.svg' alt=''>";
                         }
                         ?>
-                    </div>
+                    </a>
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        $user_id = $_SESSION['user_id'];
+                        $query_user = "SELECT name FROM users WHERE id = $user_id";
+                        $result_user = mysqli_query($conn, $query_user);
+
+                        if ($result_user) {
+                            $user = mysqli_fetch_assoc($result_user);
+                            echo "<div class='dropdown-content'>
+                                    <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
+                                    <a href='logout.php'>Logout</a>
+                                  </div>";
+                        }
+                    }
+                    ?>
                 </div>
             </div>
+        </div>
     </header>
 
     <main class="main-container">
         <div class="tes-container">
             <form class="tes-wrap" action="process_purchase.php" method="POST">
-                
-                <input type="hidden" value= '<?php echo $pesan_reguler?>' name="reguler">
-                <input type="hidden" value= '<?php echo $pesan_vip?>' name="vip">
-                <input type="hidden" value= '<?php echo $pesan_super_vip?>' name="super_vip">
+                <input type="hidden" value='<?php echo $pesan_reguler ?>' name="reguler">
+                <input type="hidden" value='<?php echo $pesan_vip ?>' name="vip">
+                <input type="hidden" value='<?php echo $pesan_super_vip ?>' name="super_vip">
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $konser_id = $_POST['konser_id'];
@@ -95,7 +97,7 @@ if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
                         exit();
                     }
 
-                    function generateForm($type, $count, $detail_konser) {
+                    function generateForm($type, $count, $price, $detail_konser) {
                         for ($i = 1; $i <= $count; $i++) {
                             echo "
                             <div class='wrapper-order'>
@@ -116,43 +118,50 @@ if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
                                     </div>
                                 </div>
                             </div>";
-                                echo "
-                                <div class='detail-info'>
-                                    <div class='img-event'>
-                                        <img src='{$detail_konser['gambar_konser']}' alt=''>
-                                    </div>
-                                    <div class='details-order'>
-                                        <h1>{$detail_konser['nama_konser']}</h1>  
-                                        <ul class='ul-detail'>
-                                            <li class='li-detail'>Nama Artis : <span>{$detail_konser['nama_artis']}</span></li>
-                                            <li class='li-detail'>Tanggal : <span>{$detail_konser['waktu_konser']}</span></li>
-                                            <li class='li-detail'>Jam Mulai : <span>{$detail_konser['jam_konser']}</span></li>
-                                            <li class='li-detail'>Lokasi : <span>{$detail_konser['lokasi']}</span></li>
-                                        </ul>    
-                                    </div>
+                            echo "
+                            <div class='detail-info'>
+                                <div class='img-event'>
+                                    <img src='{$detail_konser['gambar_konser']}' alt=''>
                                 </div>
+                                <div class='details-order'>
+                                    <h1>{$detail_konser['nama_konser']}</h1>  
+                                    <ul class='ul-detail'>
+                                        <li class='li-detail'>Nama Artis : <span>{$detail_konser['nama_artis']}</span></li>
+                                        <li class='li-detail'>Tanggal : <span>{$detail_konser['waktu_konser']}</span></li>
+                                        <li class='li-detail'>Jam Mulai : <span>{$detail_konser['jam_konser']}</span></li>
+                                        <li class='li-detail'>Lokasi : <span>{$detail_konser['lokasi']}</span></li>
+                                        <li class='li-detail'>Harga Tiket : <span>Rp. " . number_format($price, 0, ',', '.') . "</span></li>
+                                    </ul>    
+                                </div>
+                            </div>
                             </div>";
                         }
                     }
 
+                    $harga_reguler = $_POST['harga-reguler-ticket'];
+                    $harga_vip = $_POST['harga-vip_ticket'];
+                    $harga_super_vip = $_POST['harga-supervip-ticket'];
+
                     if ($reguler_ticket > 0) {
-                        generateForm('Reguler', $reguler_ticket, $detail_konser);
+                        generateForm('Reguler', $reguler_ticket, $harga_reguler, $detail_konser);
                     }
 
                     if ($vip_ticket > 0) {
-                        generateForm('VIP', $vip_ticket, $detail_konser);
+                        generateForm('VIP', $vip_ticket, $harga_vip, $detail_konser);
                     }
 
                     if ($super_vip_ticket > 0) {
-                        generateForm('Super VIP', $super_vip_ticket, $detail_konser);
+                        generateForm('Super VIP', $super_vip_ticket, $harga_super_vip, $detail_konser);
                     }
                 } else {
                     echo "No ticket selected.";
                 }
                 ?>
-                <button type="submit">Submit</button>
+                <div class="container-btn">
+                <button type="submit" class="pesan">Order Now</button>
+                </div>
             </form>
-            <p>Total Harga : <?php echo $total?></p>
+            <h2 class="totalharga">Total Harga : <?php echo "Rp. " . number_format($total, 0, ',', '.'); ?></h2>
             <div class="details-back">
                 <a href="detail.php?id=<?php echo $konser_id; ?>"><h1>&#60; Back To Details</h1></a>
             </div>
