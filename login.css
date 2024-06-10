@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+.overlay-panel h1 a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.overlay-panel h1 a:hover{
+    text-decoration: underline;
+    color: #71a5ff;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: #f6f5f7;

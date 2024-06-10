@@ -1095,11 +1095,12 @@ main {
     cursor: pointer;
     text-align: center;
     height: 30px;
-    padding: 5px;
+    padding: 7px;
     margin-top:-10px ;
-    position: absolute;
+    position: relative;
     text-decoration: none;
-    margin-left:150px;
+    left: 50px;
+    top: 5px;
 }
 
 /* Search View */
