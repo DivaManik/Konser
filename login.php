@@ -17,14 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['id'];
             header("Location: index.php");
+            exit;
         } else {
-            echo "Incorrect password.";
+            echo "<script>
+                alert('email atau password salah!');
+                window.location.href='login.html';
+                </script>";
+            exit;
         }
     } else {
-        echo "No user found with that email.";
+        echo "<script>
+            alert('email atau password salah!');
+            window.location.href='login.html';
+            </script>";
+        exit;
     }
 
-    $stmt->close();
 }
 $conn->close();
 ?>

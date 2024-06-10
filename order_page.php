@@ -19,10 +19,10 @@ if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
     echo "<script>window.location.href='detail.php?id=$konser_id';</script>";
     exit();
 } else {
-    $harga_reguler = (int)$_POST['harga-reguler-ticket'] * (int)$pesan_reguler;
-    $harga_vip = (int)$_POST['harga-vip_ticket'] * (int)$pesan_vip;
-    $harga_super_vip = (int)$_POST['harga-supervip-ticket'] * (int)$pesan_super_vip;
-    $total = $harga_reguler + $harga_super_vip + $harga_vip;
+    $harga_regulers = (int)$_POST['harga-reguler-ticket'] * (int)$pesan_reguler;
+    $harga_vips = (int)$_POST['harga-vip_ticket'] * (int)$pesan_vip;
+    $harga_super_vips = (int)$_POST['harga-supervip-ticket'] * (int)$pesan_super_vip;
+    $total = $harga_regulers + $harga_super_vips + $harga_vips;
 }
 
 ?>

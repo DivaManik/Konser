@@ -6,7 +6,7 @@ include 'koneksi.php';
 if (isset($_GET['id'])) {
     $konser_id = $_GET['id'];
 
-    // Query untuk mengambil detail konser berdasarkan ID
+
     $query_detail = "SELECT * FROM konser WHERE id = $konser_id";
     $result_detail = mysqli_query($conn, $query_detail);
 

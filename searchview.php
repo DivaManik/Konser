@@ -68,7 +68,7 @@ $conn->close();
                 <!-- Search Bar -->
                 <div class="search">
                     <form action="index.php" method="get">
-                        <input class="search-box" type="text" name="search" placeholder="Search...">
+                        <input class="search-box" type="text" name="search" placeholder="Search..." value="<?php echo $search_query; ?>">
                     </form>
                     <div class="cone-filter" href="#">
                         <div class="container-cone">
@@ -112,7 +112,34 @@ $conn->close();
         </header>
         <main class="search-view">
             <!-- Other -->
-            <div class="recomend-text other-text"><h2>Search Results</h2></div>
+            <div class="recomend-text other-text">
+            <!-- <?php if (count($temp) > 0) { ?>
+                <h2>Search Results for : <?php echo htmlspecialchars($search_query); ?></h2>
+            <?php } else { ?>
+            <h2>No Results for : <?php echo htmlspecialchars($search_query); ?></h2>
+                <?php } ?> -->
+
+                <?php
+                if (!empty($search_query)  && (count($temp)>0)) {
+                    echo "<h2>Search Results for: " . htmlspecialchars($search_query) . "</h2>";
+                }elseif(!empty($search_query) && (count($temp)<=0)){
+                    echo "<h2>No Results for: " . htmlspecialchars($search_query) . "</h2>";
+                } else {
+                    switch ($filter) {
+                        case "location":
+                            echo "<h2>Search By Location</h2>";
+                            break;
+                        case "date":
+                            echo "<h2>Search By Date</h2>";
+                            break;
+                        default:
+                            echo "<h2>Search By Name</h2>";
+                            break;
+                    }
+                }
+                ?>
+            </div>
+
             <div class="recomend other-2">
                 <div class="recomend-container other-container">
                     <?php if (count($temp) > 0) {
