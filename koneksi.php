@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "new_user";
+$password = "password";
 $dbname = "dbkonser";
 
 // Create connection
